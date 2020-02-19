@@ -1,10 +1,10 @@
 var svgWidth = 960;
-var svgHeight = 500;
+var svgHeight = 600;
 
 var margin = {
     top: 20,
     right: 40,
-    bottom: 80,
+    bottom: 120,
     left: 100
 };
 
@@ -85,7 +85,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
     circlesGroup.call(toolTip);
 
     circlesGroup.on("mouseover", function (data) {
-        toolTip.show(data);
+        toolTip.show(data, this);
     })
         // onmouseout event
         .on("mouseout", function (data, index) {
@@ -158,14 +158,14 @@ d3.csv("assets/data/data.csv").then(function (Censusdata, err) {
 
     var obeseLabel = labelsGroup.append("text")
         .attr("x", 0)
-        .attr("y", 40)
+        .attr("y", 50)
         .attr("value", "obesity") // value to grab for event listener
         .classed("inactive", true)
         .text("Obese (%)");
 
     var povertyLabel = labelsGroup.append("text")
         .attr("x", 0)
-        .attr("y", 40)
+        .attr("y", 80)
         .attr("value", "poverty") // value to grab for event listener
         .classed("inactive", true)
         .text("In Poverty (%)");
